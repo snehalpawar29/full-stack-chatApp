@@ -44,9 +44,11 @@ touch .env
 ```
 Add the following configuration:
 
+```bash
 MONGODB_URI=mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin
 JWT_SECRET=your_jwt_secret_key
 PORT=5001
+```
 
 Note: Replace your_jwt_secret_key with a strong secret key of your choice.
 ---
