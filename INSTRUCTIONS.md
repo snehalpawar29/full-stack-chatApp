@@ -31,10 +31,27 @@ For an AWS EC2-based setup, ensure the EC2 instance can communicate with the Kub
 git clone https://github.com/snehalpawar29/full-stack-chatApp.git
 cd full-stack-chatApp
 ```
+## 3. 🔐 Setup .env File
 
+Navigate to the `backend` directory:
+
+```bash
+cd backend
+```
+Create a .env file:
+```bash
+touch .env
+```
+Add the following configuration:
+
+MONGODB_URI=mongodb://mongoadmin:secret@mongodb:27017/dbname?authSource=admin
+JWT_SECRET=your_jwt_secret_key
+PORT=5001
+
+Note: Replace your_jwt_secret_key with a strong secret key of your choice.
 ---
 
-## 3. ☸️ Verify Kubernetes Cluster
+## 4. ☸️ Verify Kubernetes Cluster
 
 Check that the cluster is available:
 
@@ -53,7 +70,7 @@ Your node name may be different depending on the cluster configuration.
 
 ---
 
-## 4. 🏷️ Create the Namespace
+## 5. 🏷️ Create the Namespace
 
 The application uses the dedicated namespace:
 
@@ -75,7 +92,7 @@ kubectl get all -n chatapp-ns
 
 ---
 
-## 5. 🐳 Build Docker Images
+## 6. 🐳 Build Docker Images
 
 Build the frontend image:
 
@@ -97,7 +114,7 @@ docker images
 
 ---
 
-## 6. 📦 Push Images to Docker Hub
+## 7. 📦 Push Images to Docker Hub
 
 Login to Docker Hub:
 
@@ -127,7 +144,7 @@ mongo:latest
 
 ---
 
-## 7. ☸️ Deploy Kubernetes Resources
+## 8. ☸️ Deploy Kubernetes Resources
 
 Apply the Kubernetes manifests:
 
@@ -147,7 +164,7 @@ This creates the required Kubernetes resources, including:
 
 ---
 
-## 8. 🔍 Verify Pods
+## 9. 🔍 Verify Pods
 
 Check the application Pods:
 
@@ -171,7 +188,7 @@ kubectl get all -n chatapp-ns -o wide
 
 ---
 
-## 9. 🌐 Verify Services
+## 10. 🌐 Verify Services
 
 Run:
 
@@ -222,7 +239,7 @@ MongoDB is accessible internally by the backend.
 
 ---
 
-## 10. 🚀 Access the Application
+## 11. 🚀 Access the Application
 
 Find the Kubernetes worker node IP:
 
@@ -244,7 +261,7 @@ For an AWS EC2 deployment, make sure the relevant inbound security-group rule al
 
 ---
 
-## 11. 💾 Verify Persistent Storage
+## 12. 💾 Verify Persistent Storage
 
 Check the PersistentVolume:
 
@@ -269,7 +286,7 @@ kubectl describe pvc <PVC-NAME> -n chatapp-ns
 
 ---
 
-## 12. 📊 Verify Deployments
+## 13. 📊 Verify Deployments
 
 Run:
 
@@ -295,7 +312,7 @@ kubectl rollout status deployment/mongodb-deployment -n chatapp-ns
 
 ---
 
-## 13. 🔎 Troubleshooting
+## 14. 🔎 Troubleshooting
 
 ### Check Pod logs
 
@@ -337,7 +354,7 @@ kubectl get events -n chatapp-ns --sort-by=.metadata.creationTimestamp
 
 ---
 
-## 14. 🔄 Updating the Application
+## 15. 🔄 Updating the Application
 
 After changing the frontend or backend code:
 
@@ -385,7 +402,7 @@ kubectl get pods -n chatapp-ns
 
 ---
 
-## 15. 🧹 Remove the Deployment
+## 16. 🧹 Remove the Deployment
 
 To remove the Kubernetes resources created from the manifests:
 
@@ -403,7 +420,7 @@ kubectl delete namespace chatapp-ns
 
 ---
 
-## 16. 🧾 Useful Commands
+## 17. 🧾 Useful Commands
 
 | Purpose                  | Command                                                        |
 | ------------------------ | -------------------------------------------------------------- |
