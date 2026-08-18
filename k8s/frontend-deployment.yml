@@ -1,0 +1,31 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: frontend-deployment
+  namespace: chatapp-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatapp-frontend
+  template:
+    metadata:
+      name: frontend-deployment
+      namespace: chatapp-ns
+      labels:
+        app: chatapp-frontend
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: chatapp-cluster-worker
+      containers:
+        - name: chatapp-frontend
+          image: snehalpawar2945/chatapp-frontend:latest
+          imagePullPolicy: Always
+          ports:
+           - containerPort: 80
+          env:
+           - name: NODE_ENV
+             value: production
+
+
+
